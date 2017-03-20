@@ -42,6 +42,7 @@ export default {
 				el.active = false;
 			});
 			this.treeData[index].active = true;
+			// this.treeData[index] = Object.assign({}, this.treeData[index], {active: true})
 			// 把下级的所有选择状态重置
 			this.resetChildren(this.treeData[index]);
 			this.$emit('get-choice', this.treeData[index].parent);

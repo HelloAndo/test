@@ -11,10 +11,14 @@
     </div>
     <component :is="currentBox" :date="date" ref="box"
                 @change-date="changeDate"></component>
+    <span @click="asyncLoad">异步加载demo</span>
+    <component :is="currentAsyncComponent"></component>
   </div>
 </div>
 </template>
 <script>
+// import wp from 'webpack'
+import Vue from 'vue'
 import _ from 'lodash'
 var map = {
   10: 'dayBox',
@@ -28,11 +32,24 @@ export default {
         yy: undefined,
         mm: undefined,
       },
-      curBoxIdx: 10
+      curBoxIdx: 10,
+      currentAsyncComponent: ''
       // currentBox: '',
     }
   },
   methods: {
+    asyncLoad () {
+      this.currentAsyncComponent = 'v-demo'
+      Vue.component('v-demo', (resolve, reject) => {
+        require(['./demo.vue'], component => {
+          resolve(component)
+        })
+        // require.ensure(["./demo.vue"], function (require) {
+        //   resolve(require("./demo.vue"));
+        // });
+      })
+
+    },
     changeDate (obj, boxIdx) {
       this.date = Object.assign({}, this.date, obj)
       if (!!boxIdx) {
@@ -84,7 +101,7 @@ export default {
   }
 }
 </script>
-<style>
+<style scoped>
 .clearfix:before{display: table; clear: both; content: '';}
 .table{}
 .table .caption{}

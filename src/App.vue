@@ -8,15 +8,11 @@
                       @sort="sort"
                       @clear="clear"></sortable-list>
     </div>
-    <p>
-      <div class="demo" draggable>三三</div>  
-    </p>
-    <div>
+    <!-- <div>
       <date-picker></date-picker>
     </div>
-    <!-- <img src="./assets/logo.png"> -->
-    <!-- <hello></hello> -->
-    <!--<div id="cascader">
+
+    <div id="cascader">
       <dy-cascader :tree-data="treeData"
                    :default-choice="defaultChoice"
                    @get-result="outputCascaderResult"></dy-cascader>  
@@ -33,7 +29,7 @@
                       @get-options="getList"
                       @hit="outputAutoCompleteResult"></auto-complete>
       <p>自动完成/联想输入</p>        
-    </div>-->
+    </div> -->
     <!--<div id="tags-select">
       <router-view></router-view>
     </div>-->
@@ -50,7 +46,6 @@ import autoComplete from './components/auto-complete'
 import sortableList from './components/sortable-list'
 import datePicker from './components/date-picker/index'
 
-var ando = 'ando'
 export default {
   name: 'app',
   components: {
@@ -67,12 +62,8 @@ export default {
        }
     }
   },
-  // route: {
-  //   canReuse: false
-  // },
   mounted () {
     this.addKey(this.sortableData);
-    // debugger
   },
   data () {
     return {

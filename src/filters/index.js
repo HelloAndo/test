@@ -11,7 +11,9 @@ Vue.filter('chinesize', function (val) {
     7: '七',
     8: '八',
     9: '九',
-    10: '十'
+    10: '十',
+    11: '十一',
+    12: '十二'
   }
   return map[val]
 })

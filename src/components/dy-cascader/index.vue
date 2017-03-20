@@ -1,8 +1,8 @@
 <template>
-<div class="dy-cascader">
+<div class="dy-cascader" v-outerclick="closeCascader">
 	<input type="text" readonly autocomplete="off" 
 					v-model="cascader"
-					@click.stop="showDropdown">
+					@click="showDropdown">
 	<span class="remove"
 				v-show="choice.length"
 				@click="removeChoice">&#10006;</span>
@@ -18,6 +18,7 @@
 </template>
 <script>
 import $ from 'jquery'
+import '../../directives/index.js'
 import tree from './tree.vue'
 var flag = false;
 export default {
@@ -41,6 +42,9 @@ export default {
 		}
 	},
 	methods: {
+		closeCascader () {
+			this.isShowCascader = false;
+		},
 		getChoice (val) {
 			flag = true;
 			this.getActive(this.treeData, val);
@@ -87,15 +91,15 @@ export default {
 			});
 		}
 	},
-	// mounted () {
-	// 	var self = this;
+	mounted () {
+		var self = this;
 
-	// 	self.addKey(self.treeData);
+		self.addKey(self.treeData);
 
-	// 	$('html, body').click(function(e) {
-	// 		self.isShowCascader = false;
-	// 	});
-	// },
+		// $('html, body').click(function(e) {
+		// 	self.isShowCascader = false;
+		// });
+	},
 	computed: {
 		cascader: {
 			get: function () {

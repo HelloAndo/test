@@ -18,7 +18,8 @@
 	</transition>
 </div> -->
 <div class="chosen-box"
-			@click.stop="init"
+			v-outerclick="closeOpts"
+			@click="init"
 			@keydown.delete="delFlag($event)"
 			@keyup="keyupHandle($event)">
 	<div class="wrapper">
@@ -105,6 +106,9 @@ export default {
 		}
 	},
 	methods: {
+		closeOpts () {
+			this.isShowOptions = false;
+		},
 		init () {
 			$('.ipt').focus();
 			this.isShowOptions = true;
@@ -192,16 +196,16 @@ export default {
 	    return width;
     }
 	},
-	// mounted () {
-	// 	var self = this;
-	// 	fontSetting = $(self.$el).find('.ipt').css('font');
-	// 	console.log(fontSetting);
-	// 	document.addEventListener("click", function(){
-	// 	  self.isShowOptions = false;
-	// 	  self.isInputBreak = false;
-	// 	  self.myinput = '';
-	// 	});
-	// }
+	mounted () {
+		var self = this;
+		fontSetting = $(self.$el).find('.ipt').css('font');
+		// console.log(fontSetting);
+		// document.addEventListener("click", function(){
+		//   self.isShowOptions = false;
+		//   self.isInputBreak = false;
+		//   self.myinput = '';
+		// });
+	}
 }
 </script>
 

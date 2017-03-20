@@ -118,7 +118,7 @@ export default {
   }
 }
 </script>
-<style>
+<style scoped>
 .drag-el{background-color: yellow;}
 li{padding-top: 1px; padding-bottom: 1px; border-left: 1px dashed #ccc;}
 li span{display: block; border-top: 2px solid #eee; border-bottom: 2px solid #eee;}
